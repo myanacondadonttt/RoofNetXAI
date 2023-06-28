@@ -138,7 +138,7 @@ class VAE(nn.Module):
     def encode(self, x): # encodes the input features x into the latent space
         h = self.encoder(x) # encodes the input features x into the hidden representation h
         z, mu, logvar = self.bottleneck(h) # combines the mean and the variance of the latent Gaussian distribution
-        return z, mu, logvar, h 
+        return z, mu, logvar
 
     def decode(self, z): # decodes the latent variable z into the output features
         z = self.fc3(z) # maps the latent sample z to the hidden representation h
@@ -146,9 +146,9 @@ class VAE(nn.Module):
         return z # returns the reconstructed features
 
     def forward(self, x): # forward pass, maps the input features x to the reconstructed features
-        h = self.encoder(x) # encodes the input features x into the hidden representation h
-        z, mu, logvar = self.bottleneck(h) # combines the mean and the variance of the latent Gaussian distribution
-        # z, mu, logvar, _ = self.encode(x)
+        # h = self.encoder(x) # encodes the input features x into the hidden representation h
+        # z, mu, logvar = self.bottleneck(h) # combines the mean and the variance of the latent Gaussian distribution
+        z, mu, logvar = self.encode(x)
         recon_x = self.decode(z) # decodes the latent variable z into the reconstructed features
-        return recon_x, z, mu, logvar, h
+        return recon_x, z, mu, logvar
 
