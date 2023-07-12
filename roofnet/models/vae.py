@@ -152,3 +152,4 @@ class VAE(nn.Module):
         recon_x = self.decode(z) # decodes the latent variable z into the reconstructed features
         return recon_x, z, mu, logvar
 
+    
