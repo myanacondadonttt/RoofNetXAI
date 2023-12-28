@@ -10,7 +10,15 @@ Project in conjuction with Misha Laskin, Chris Heinrich, and Evert P.L. van Nieu
 
 Paper available: https://arxiv.org/abs/2001.04227
 
-Rooftop solar is one of the most promising tools for drawing down greenhouse gas (GHG) emissions and is cost-competitive with fossil fuels in many areas of the world today. One of the most important criteria for determining the suitability of a building for rooftop solar is the current age of its roof. The reason for this is simple -- because rooftop solar installations are long-lived, the roof needs to be new enough to last for the lifetime of the solar array or old enough to justify being replaced. We present a data-driven method for determining the age of a roof from historical satellite imagery, which removes one of the last obstacles to a fully automated pipeline for rooftop solar site selection.
-Our model is comprised of a convolutional variational autoencoder and deep fully connected binary classifier trained using historic satellite rooftop images. True labels were scraped from public reroof permit data. At inference time images are encoded into latent vectors by the VAE and concatenated for classification. Roof age is determined as the argmax over temporally adjacent images. A roof age is undefined if no pair of images classify as a reroof.
+Rooftop solar represents a crucial solution in reducing greenhouse gas (GHG) emissions, offering a cost-effective alternative to fossil fuels in various regions worldwide. A key factor in assessing the feasibility of rooftop solar installations is the age of the building's roof. This is critical because the lifespan of the roof should align with the longevity of the solar array to avoid premature replacements. This study introduces a data-driven approach to estimate roof age from historical satellite imagery, facilitating an automated pipeline for rooftop solar site selection. The method utilizes a convolutional variational autoencoder combined with a deep fully connected binary classifier, trained on historical satellite images of rooftops. Labels for training are obtained from public reroof permit data. During inference, images are encoded into latent vectors by the variational autoencoder and concatenated for classification. The age of the roof is determined by finding the argmax over temporally adjacent images, with roof age considered undefined if no pair of images classify as a reroof.
 
 
+# Notebooks
+
+Code is represented in following notebooks:
+
+- Main SDR Average Training, 10 runs - 1 Model
+- Main SOTA, SDR K-fold, SIR Training - 3 Models 
+- Main Evaluation - Evaluation Notebook for Robustness of a Model, Average Sensitivity of an Explanation
+
+One pre-trained VAE is used for every model.
